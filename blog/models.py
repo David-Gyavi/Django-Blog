@@ -1,13 +1,10 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
-class Musician(models.model):
+class Blog(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=50)
     post_created = models.DateTimeField(default=timezone.now())
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class Album(models.Model):
-    artist = models.ForeignKey(Musician, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    release_date = models.DateField()
-    num_stars = model.IntegerField()    
