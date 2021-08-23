@@ -1,8 +1,23 @@
-
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<h1> This is great, my first view in Django</h1>
-Hello Django
 
+
+<div class="col-md-10 col-lg-8 mx-auto">
+    {% for blog in blogs %}
+    <div class="post-preview">
+            <h2 class="post-title">
+                {{ blog.title }}
+            </h2>
+            <p>{{ blog.content }}</p>
+        <p class="post-meta">
+            Posted by : {{ blog.author.username }}</a>
+            on {{ blog.post_created }}
+        </p>
+    </div>
+    <!-- Divider-->
+    <hr>
+    {% endfor %}
+</div>
+    
 {% endblock content %}

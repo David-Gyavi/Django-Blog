@@ -1,9 +1,14 @@
 from django.shortcuts import render
+from . models import Blog
 
 def homepage(request):
-    return render(request, 'blog/homepage.html', {'title': 'Home Django project'})
+    blogs = Blog.objects.all()
+    content = {'title': 'Home Django project', 'blog': blogs}
+
+
+    return render(request, 'blog/homepage.html', content)
 
 def about(request):
-    return render(request, 'blog/about.html', {'title':'About Django project'})    
+    return render(request, 'blog/about.html', {'title': 'About Django project'})    
 
-# Create your views here.
+
