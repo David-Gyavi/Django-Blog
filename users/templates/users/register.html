@@ -2,8 +2,13 @@
 
 {% block content %}
 <div class="col-lg-8 col-md-10 mx-auto">
-    {% csrf_token %}
-    {{ form }}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p/>
+        <button class="btn btn-primary text-uppercase disabled" id="sendMessageButton" type="submit">Send</button>
+    </form>
 </div>
+
 
 {% endblock content %}
