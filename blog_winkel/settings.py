@@ -40,7 +40,12 @@ INSTALLED_APPS = [
 
     # user defined apps
     'blog.apps.BlogConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+
+    # 3rd party apps
+
+   'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -127,3 +132,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Custom settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
