@@ -18,3 +18,18 @@ class UserRegistrationForm(UserCreationForm):
         help_texts = {
             'username' : None,
         }
+
+
+class UserProfileForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=100, help_text='100 characters max', required=False)
+    last_name = forms.CharField(max_length=100, help_text='100 characters max', required=False)
+    email = forms.CharField(required=False)
+
+
+    class Meta:
+        model = User
+        User.username = forms.CharField(max_length=100, required=False)
+        fields = ['first_name', 'last_name', 'username', 'email']
+        help_texts = {
+            'username' : None,
+        }        
