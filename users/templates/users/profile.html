@@ -5,7 +5,8 @@
 <div class="col-lg-8 col-md-10 mx-auto">
     <form method="POST">
         {% csrf_token %}
-        {{ form | crispy  }}
+        {{ user_form|crispy  }}
+        {{ profile_picture_form|crispy  }}
         <p/>
         <button class="btn btn-primary text-uppercase disabled" id="sendMessageButton" type="submit">Update Profile</button>
     </form>
