@@ -20,16 +20,17 @@ def profile(request):
     if request.method == 'POST':
         user_form = UserProfileForm(request.POST, instance=request.user)
         profile_picture_form = ProfilePictureForm(request.POST, request.FILES,
-        instance=request.user.profiles)
+        instance=request.user.profile)
         if user_form.is_valid() and profile_picture_form.is_valid:
-            form.save()
+            user_form.save()
             profile_picture_form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Profile updated for the user {username}')
+            username = user_form.cleaned_data.get('username')
+            messages.success(request,
+            f'Profile updated for the user {username}')
             return redirect('users-profile')
     else:
         user_form = UserProfileForm(instance=request.user)
-        profile_picture_form = ProfilePictureForm(instance=request.user.profile)
+        profile_picture_form = ProfilePictureForm(instance=
+        request.user.profile)
     return render(request, 'users/profile.html', {'user_form': user_form,
-                                                 'profile_picture_form' : profile_picture_form})
-
+                            'profile_picture_form' : profile_picture_form})
