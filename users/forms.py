@@ -26,8 +26,8 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=100, help_text='100 characters max', required=False)
-    last_name = forms.CharField(max_length=100, help_text='100 characters max', required=False)
+    first_name = forms.CharField(max_length=100, required=False)
+    last_name = forms.CharField(max_length=100, required=False)
     email = forms.CharField(required=False)
 
 
@@ -44,6 +44,7 @@ class UserProfileForm(forms.ModelForm):
 
 
 class ProfilePictureForm(forms.ModelForm):
+    profile_pic = forms.ImageField(required=False, label='Change Profile Pic')
     class Meta:
         model =  Profile
         fields = ['profile_pic']      

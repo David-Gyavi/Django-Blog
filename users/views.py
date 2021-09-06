@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from . forms import UserRegistrationForm, UserProfileForm, ProfilePictureForm
 from django.contrib import messages
 
@@ -15,22 +16,23 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'users/register.html', {'form': form})
 
-
+@login_required
 def profile(request):
     if request.method == 'POST':
         user_form = UserProfileForm(request.POST, instance=request.user)
-        profile_picture_form = ProfilePictureForm(request.POST, request.FILES,
-        instance=request.user.profile)
-        if user_form.is_valid() and profile_picture_form.is_valid:
+        profile_picture_form = ProfilePictureForm(request.POST,
+                                                  request.FILES,
+                                                  instance=request.user.profile)
+        if user_form.is_valid() and profile_picture_form.is_valid():
             user_form.save()
             profile_picture_form.save()
             username = user_form.cleaned_data.get('username')
-            messages.success(request,
-            f'Profile updated for the user {username}')
+            messages.success(request, f'Profile updated for the user {username}')
             return redirect('users-profile')
+
     else:
         user_form = UserProfileForm(instance=request.user)
-        profile_picture_form = ProfilePictureForm(instance=
-        request.user.profile)
-    return render(request, 'users/profile.html', {'user_form': user_form,
-                            'profile_picture_form' : profile_picture_form})
+        profile_picture_form = ProfilePictureForm()
+    return render(request, 'users/profile.html',
+                  {'user_form': user_form,
+                   'profile_picture_form': profile_picture_form})
