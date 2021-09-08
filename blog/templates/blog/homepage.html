@@ -10,7 +10,7 @@
                 {{ blog.title }}
             </h2>
             <p>
-                {{ blog.content }}
+                {{ blog.content|slice:":60" }}  .....  read more
             </p>
         <p class="post-meta">Posted by : {{ blog.author.username }}
             on: {{ blog.post_created }}
