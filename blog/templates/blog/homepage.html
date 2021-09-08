@@ -9,13 +9,13 @@
             <h2 class="post-title">
                 {{ blog.title }}
             </h2>
-            <p>{{ blog.content }}</p>
-        <p class="post-meta">
-            Posted by : {{ blog.author.username }}</a>
-            on {{ blog.post_created }}
+            <p>
+                {{ blog.content }}
+            </p>
+        <p class="post-meta">Posted by : {{ blog.author.username }}
+            on: {{ blog.post_created }}
         </p>
     </div>
-    <!-- Divider-->
     <hr>
     {% endfor %}
 </div>
