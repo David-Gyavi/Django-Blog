@@ -61,6 +61,9 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog-post-create' %}">Create post</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'users-profile' %}">Profile</a>
                 </li>
                 <li class="nav-item">

@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from . models import Blog
-from django.views.generic import ListView, TemplateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, TemplateView, DetailView, CreateView
 
 
 class HomeListView(ListView):
@@ -11,11 +11,23 @@ class HomeListView(ListView):
     template_name = 'blog/homepage.html'
 
 class PostDetailView(DetailView): 
-    pass         
+    model = Blog  
+    template_name = 'blog/post_detail.html'
+    context_object_name = 'blog'  
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Blog
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+          
 
 
 class AboutTemplateView(TemplateView):
      extra_context = {'title': 'About Django project'}
      template_name = 'blog/about.html'  
+     
 
 

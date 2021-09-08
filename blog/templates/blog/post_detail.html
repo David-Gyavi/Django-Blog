@@ -4,20 +4,17 @@
 
 
 <div class="col-md-10 col-lg-8 mx-auto">
-    {% for blog in blogs %}
     <div class="post-preview">
             <h2 class="post-title">
-               <a href="{% url 'blog-post-detail' blog.id %}"> {{ blog.title }}</a>
+                {{ blog.title }}
             </h2>
             <p>
-                {{ blog.content|slice:":60" }}  ... <a href="{% url 'blog-post-detail' blog.id %}">read more </a>
+                {{ blog.content }}
             </p>
         <p class="post-meta">Posted by : {{ blog.author.username }}
             on: {{ blog.post_created }}
         </p>
     </div>
-    <hr>
-    {% endfor %}
 </div>
     
 {% endblock content %}
