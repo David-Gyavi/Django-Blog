@@ -7,7 +7,7 @@
     {% for blog in blogs %}
     <div class="post-preview">
             <h2 class="post-title">
-                {{ blog.title }}
+               <a href="{% url 'blog-post-detail' blog.id %}"> {{ blog.title }}</a>
             </h2>
             <p>
                 {{ blog.content|slice:":60" }}  .....  read more
