@@ -18,6 +18,7 @@ class HomeListView(ListView):
     extra_context = {'title': 'Home Django project'}
     ordering =["-post_created"]
     template_name = 'blog/homepage.html'
+    paginate_by = 4
 
 class PostDetailView(DetailView):
     model = Blog
