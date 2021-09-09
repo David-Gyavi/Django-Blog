@@ -11,4 +11,6 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(
         template_name = 'users/logout.html'),
          name='users-logout'),
+    path('change_password/', views.UserPasswordChangeView.as_view(),
+         name='users-change_password'),
 ]
