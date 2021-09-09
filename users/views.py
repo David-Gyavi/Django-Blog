@@ -4,6 +4,7 @@ from .forms import UserRegistrationForm, UserProfileForm, ProfilePictureForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 
 
 def register(request):
@@ -44,4 +45,4 @@ def profile(request):
 class UserPasswordChangeView(PasswordChangeView):
     model = User      
     template_name = 'users/password_change_form.html' 
-    success_url = '/users/profile'         
+    success_url = reverse_lazy('users-profile')         

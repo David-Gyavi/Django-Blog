@@ -17,6 +17,8 @@
         {{ user_form|crispy  }}
         {{ profile_picture_form|crispy  }}
     <p/>  <button class="btn btn-primary"  id="sendMessageButton" type="submit">Update Profile</button>
+    <hr>
+    <a href="{% url 'users-change-password' %}">Change password</a>
     </form>
 </div>
 
