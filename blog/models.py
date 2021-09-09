@@ -14,5 +14,5 @@ class Blog(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('blog-post-details', args=[str(self.id)])     
+        return reverse('blog-post-detail', args=[str(self.id)])     
 
