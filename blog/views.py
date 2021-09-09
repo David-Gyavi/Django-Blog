@@ -58,6 +58,8 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Blog
     success_url = reverse_lazy('blog-homepage')
+    template_name = 'blog/blog_confirm_delete.html'
+    context_object_name = 'object'
 
    
 

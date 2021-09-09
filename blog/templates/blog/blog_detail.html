@@ -10,10 +10,16 @@
             </h2>
             <p>
                 {{ blog.content }}
-            </p>
+            </p>`
+            {% if blog.author == user %}
         <p class="post-meta">Posted by : {{ blog.author.username }}
             on: {{ blog.post_created }}
         </p>
+        <div>
+            <a href="{% url 'blog-post-update' blog.id %}" class="btn btn-info">Update</a>
+            <a href="{% url 'blog-post-delete' blog.id %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% endif %}
     </div>
 </div>
     
